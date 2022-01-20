@@ -1,11 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { reporterJson } from "vfile-reporter-json";
-import { unified } from "unified";
 import { retext } from "retext";
-import retextEnglish from "retext-english";
 import retextIndefiniteArticle from "retext-indefinite-article";
 import retextRepeatedWords from "retext-repeated-words";
 import retextStringify from "retext-stringify";
