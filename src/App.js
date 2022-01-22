@@ -25,6 +25,7 @@ import {
   Stack, 
   Typography, 
   List, 
+  Chip
 } from '@mui/material';
 
 import '@fontsource/roboto/300.css';
@@ -103,28 +104,32 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
       className="App"
     >
       <div className="primary-section">
-        <Typography variant="h3" component="div" gutterBottom className="page-title">
-          <img src={NewRelicLogo} alt="New Relic logo" className="new-relic-logo" />
-          Language linter demo (WIP)
-        </Typography>
-        <Typography variant="body1">
-          Like Grammarly for people who write New Relic UI copy, but focused on writing-style more than grammar.
-        </Typography>
-        <Stack alignItems="flex-end" spacing={2} className="form">
-          <TextField
-            className="textfield"
-            value={sampleText}
-            multiline
-            sx={{
-              width: `100%`,
-              maxWidth: '1000px',
-            }}
-            maxRows={14}
-            label="Sample copy"
-            onChange={(e) => handleTextAreaOnChange(e)}
-            variant='filled'
-          />
-          <Button variant='contained' onClick={() => handleButtonTrigger()}>Lint text</Button>
+        <header>
+          <Typography variant="h3" component="div" gutterBottom className="page-title">
+            NR Language linter demo
+          </Typography>
+          <Typography variant="body1">
+            Like Grammarly for people who write New Relic UI copy, but focused on writing-style more than grammar.
+            This is project is a <strong>WIP</strong>.
+          </Typography>
+        </header>
+        <Stack alignItems="flex-end" spacing={2} className="primary-section-body">
+          <form className="form-container">
+            <TextField
+              className="textfield"
+              value={sampleText}
+              multiline
+              sx={{
+                width: `100%`,
+                maxWidth: '1000px',
+              }}
+              maxRows={14}
+              label="Sample copy"
+              onChange={(e) => handleTextAreaOnChange(e)}
+              variant='filled'
+            />
+            <Button variant='contained' onClick={() => handleButtonTrigger()}>Lint text</Button>
+          </form>
           <hr className="standard-hr"/>
           <div className="about">
             <Typography variant="h5" component="div" gutterBottom>
