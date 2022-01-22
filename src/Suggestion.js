@@ -1,7 +1,5 @@
 import './App.css';
 
-import { useState } from "react";
-
 import IconArrow from './images/icon-arrow.svg';
 import IconPlus from './images/icon-plus.svg';
 import IconTrash from './images/icon-trash.svg';

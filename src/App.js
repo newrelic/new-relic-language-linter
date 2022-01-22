@@ -3,7 +3,6 @@ import './App.css';
 import Suggestion from './Suggestion'
 
 import { useState } from "react";
-import { reporterJson } from "vfile-reporter-json";
 import { retext } from "retext";
 import retextIndefiniteArticle from "retext-indefinite-article";
 import retextRepeatedWords from "retext-repeated-words";
@@ -17,10 +16,6 @@ import retextSpell from "retext-spell";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
 
-import IconArrow from './images/icon-arrow.svg';
-import IconPlus from './images/icon-plus.svg';
-import IconTrash from './images/icon-trash.svg';
-import IconHelp from './images/icon-help.svg';
 
 import { 
   Button, 
@@ -30,12 +25,8 @@ import {
   Card, 
   CardContent, 
   List, 
-  ListItem, 
-  ListItemText,
-  ListItemIcon
 } from '@mui/material';
 
-import { Warning } from '@mui/icons-material';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
