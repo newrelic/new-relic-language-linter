@@ -108,7 +108,8 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
           </Typography>
           <Typography variant="body1">
             Like Grammarly for people who write New Relic UI copy, but focused on writing-style more than grammar.
-            This is project is a <strong>WIP</strong>.
+            This is project is a <strong>WIP</strong>: {` `}
+            <a href="https://github.com/danielgolden/figma-language-linter-demo/blob/master/README.md">View on GitHub</a>
           </Typography>
         </header>
         <Stack alignItems="flex-end" spacing={2} className="primary-section-body">
