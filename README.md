@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# NR Language linter demo
+Like Grammarly for people who write New Relic UI copy, but focused on writing-style more than grammar. This is project is a WIP.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 🧐 What is this?
+It's a tool built for designers, engineers and anyone else who writes NR1 copy. Why? So that they can vet their copy for basic issues like passive voice, deprecated terms, insensitive language, and more. This way we can reserve the time of our friends in [#ui-writing](https://newrelic.slack.com/archives/CE7FX92TF) for more in-depth language issues.
 
-## Available Scripts
+### 🖋️ What rules does this demo use?
+I picked some of the [out of the box rules](https://unifiedjs.com/explore/keyword/retext-plugin/) for this demo, but in addition to being able to [create our own rules](https://unifiedjs.com/learn/guide/create-a-plugin/), we can customize the existing ones. Here are the rules used in this demo:
 
-In the project directory, you can run:
+- [Contractions](https://unifiedjs.com/explore/package/retext-contractions/)
+- [Repeated words](https://unifiedjs.com/explore/package/retext-repeated-words/)
+- [Equality](https://unifiedjs.com/explore/package/retext-equality/)
+- [Indifinite article](https://unifiedjs.com/explore/package/retext-indefinite-article/)
+- [Readability](https://unifiedjs.com/explore/package/retext-readability/)
+- [Sentence spacing](https://unifiedjs.com/explore/package/retext-sentence-spacing/)
+- [Passive voice](https://unifiedjs.com/explore/package/retext-passive/)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 💬 I have questions or ideas
+Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) 👋🏽 or email me (danielgolden90[at]gmail.com). I'd love to hear/talk about them.
