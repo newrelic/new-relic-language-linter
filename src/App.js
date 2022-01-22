@@ -1,5 +1,7 @@
 import './App.css';
 
+import Suggestion from './Suggestion'
+
 import { useState } from "react";
 import { reporterJson } from "vfile-reporter-json";
 import { retext } from "retext";
@@ -14,6 +16,11 @@ import retextEquality from 'retext-equality'
 import retextSpell from "retext-spell";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
+
+import IconArrow from './images/icon-arrow.svg';
+import IconPlus from './images/icon-plus.svg';
+import IconTrash from './images/icon-trash.svg';
+import IconHelp from './images/icon-help.svg';
 
 import { 
   Button, 
@@ -46,14 +53,19 @@ star—Calvera—and Orion, the hottest star yet
 discovered, with a surface temperature of 200,000 kelvin`
   );
 
+  const retextSpellOptions = {
+    dictionary: callback => {
+      callback(null, {
+        aff: en_us_aff,
+        dic: en_us_dic,
+      })
+    },
+    max: 5,
+  }
+
   const lintMyText = () => {
     retext()
-      .use(retextSpell, callback => {
-        callback(null, {
-          aff: en_us_aff,
-          dic: en_us_dic,
-        });
-      })
+      .use(retextSpell, retextSpellOptions)
       .use(retextRepeatedWords)
       .use(retextEquality)
       .use(retextIndefiniteArticle)
@@ -63,9 +75,9 @@ discovered, with a surface temperature of 200,000 kelvin`
       .use(retextContractions)
       .use(retextStringify)
       .process(sampleText)
-      .then((text) => {
-        setReport(JSON.parse(reporterJson(text))[0].messages);
-        console.log(JSON.parse(reporterJson(text))[0].messages);
+      .then((report) => {
+        setReport(report);
+        console.log(report);
       });
   }
 
@@ -78,44 +90,14 @@ discovered, with a surface temperature of 200,000 kelvin`
   }
 
   const renderReport = () => {
-    if (report.length > 0) {
-      return report.map((issue, index) => {
-        if (issue.ruleId === 'readability') {
-          const truncatedUnreadableSentence = sampleText.substring(issue.position.start.offset,issue.position.start.offset + 50)
-          return (
-            <ListItem key={index}>
-              <ListItemIcon>
-                <Warning />
-              </ListItemIcon>
-              <ListItemText>
-                {issue.reason}: "{truncatedUnreadableSentence}..."
-              </ListItemText>
-            </ListItem>
-          )
-        } else if (issue.source === 'retext-passive') {
-          const truncatedUnreadableSentence = sampleText.substring(issue.position.start.offset,issue.position.start.offset + 50)
-          return (
-            <ListItem key={index}>
-              <ListItemIcon>
-                <Warning />
-              </ListItemIcon>
-              <ListItemText>
-                {issue.reason}: "{truncatedUnreadableSentence}..."
-              </ListItemText>
-            </ListItem>
-          )
-        } else {
-          return (
-            <ListItem key={index}>
-              <ListItemIcon>
-                <Warning />
-              </ListItemIcon>
-              <ListItemText>
-                {issue.reason}
-              </ListItemText>
-            </ListItem>
-          )
-        }
+    if (report?.messages?.length > 0) {
+      return report.messages.map((suggestion, index) => {
+        return(
+        <Suggestion 
+          suggestion={suggestion}
+          sourceText={report.value}
+        />
+        )
       });
     } else {
       return (
@@ -146,7 +128,7 @@ discovered, with a surface temperature of 200,000 kelvin`
         />
         <Button variant='contained' onClick={() => handleButtonTrigger()}>Lint text</Button>
       </Stack>
-      {report.length > 0 && (
+      {report?.messages?.length > 0 && (
         <Card>
           <CardContent>
             <Typography variant="h5">Suggestions</Typography>

@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+h6 {
+  margin: 0;
+}
+
 .App {
   padding: 28px;
 }
@@ -5,4 +13,97 @@
 .form {
   margin: 40px 0;
   max-width: 500px;
+}
+
+.suggestion-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 16px 16px 10px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.03);
+  border-radius: 6px;
+}
+
+.suggestion-rule-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.suggestion-rule-severity {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #df2d24;
+  border-radius: 100%;
+}
+
+.suggestion-rule-label {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 135%;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #6e7575;
+}
+
+.suggestion-summary-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.suggestion-summary-current {
+  text-decoration: line-through;
+  color: #df2d24;
+}
+
+.suggestion-summary-current-text {
+  font-size: 15px;
+  color: #283636;
+}
+
+.suggestion-summary-arrow {
+  transform: scale(0.9);
+}
+
+.suggestion-summary-replacement {
+  padding: 5px 7px 6px;
+  font-size: 15px;
+  background-color: #3387dd;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.suggestion-description-text {
+  margin: 2px 0 4px;
+  font-size: 13px;
+  line-height: 140%;
+  color: #283636;
+}
+
+.suggestions-ctas {
+  display: flex;
+  justify-content: space-between;
+  margin: -4px -8px 0;
+}
+
+.suggestion-cta-secondary {
+  display: flex;
+  padding: 6px 10px;
+  gap: 4px;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  color: #6e7575;
+  border-radius: 3px;
+  transition: all 0.1s ease-out;
+}
+
+.suggestion-cta-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
