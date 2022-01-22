@@ -126,7 +126,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               onChange={(e) => handleTextAreaOnChange(e)}
               variant='filled'
             />
-            <Button variant='contained' onClick={() => handleButtonTrigger()}>Lint text</Button>
+            <Button size="large" variant='contained' onClick={() => handleButtonTrigger()}>Lint text</Button>
           </form>
           <hr className="standard-hr"/>
           <div className="about">
