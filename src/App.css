@@ -2,24 +2,67 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  overflow: hidden;
+}
+
 h6 {
   margin: 0;
 }
 
-.App {
-  padding: 28px;
+a {
+  color: #0064c9;
+}
+
+hr,
+[class*="Stack-root"] > hr.standard-hr {
+  width: 100%;
+  height: 0px;
+  border: none;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  margin: 40px 0 20px;
+}
+
+.primary-section {
+  padding: 60px;
+  width: 60%;
+  height: 100%;
+  overflow: auto;
+  padding-right: 60px;
 }
 
 .form {
-  margin: 40px 0;
-  max-width: 500px;
+  margin: 40px 0 0;
 }
 
-.sugestion-list {
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.new-relic-logo {
+  width: 45px;
+}
+
+.suggestions-container {
+  height: 100%;
+  width: 40%;
+  overflow: auto;
+  padding: 60px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.MuiList-root.suggestion-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 400px;
+  margin-top: 20px;
 }
 
 .suggestion-container {
@@ -133,4 +176,31 @@ h6 {
 .suggestion-cta-secondary:hover {
   background-color: rgba(0, 0, 0, 0.05);
   cursor: pointer;
+}
+
+.about div.MuiTypography-root.MuiTypography-h5:not(:first-child) {
+  margin-top: 40px;
+}
+
+.about div.MuiTypography-root.MuiTypography-h5 {
+  margin-bottom: -5px;
+}
+
+.about p {
+  line-height: 145%;
+}
+
+.about ul {
+  line-height: 155%;
+}
+
+.MuiTypography-root.suggestions-empty-state {
+  display: grid;
+  place-items: center;
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.76);
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
 }

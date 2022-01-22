@@ -180,8 +180,7 @@ function Suggestion(props) {
           return (
             <>
               It appears your using the wrong kind of apostrophe in {` `}
-              {highlightText(suggestion.actual)}. Consider changing it to {` `}
-              {highlightText(suggestion.expected)}.
+              {highlightText(suggestion.actual)}. Consider changing it to a smart apostrophe like this: {highlightText(suggestion.expected)}.
             </>
           )
         } else {
@@ -226,10 +225,16 @@ function Suggestion(props) {
           </>
         )
       case 'retext-readability':
+        const readabilityCuplrit = () => {
+          const start = suggestion.position.start.offset
+          
+          return sourceText.substring(start, start + 20)
+        }
+
         return (
           <>
             We're {Math.round(suggestion.confidence * 100)}% confident the 
-            sentence beginning with {highlightText(sourceText.substring(0, 15))}... is 
+            sentence beginning with {highlightText(readabilityCuplrit())}... is 
             difficult to read. Consider rewriting it to make it easier to read.
           </>
         )
@@ -245,7 +250,7 @@ function Suggestion(props) {
         learnMoreLink = 'https://en.wikipedia.org/wiki/American_English';
         break;
       case 'retext-contractions':
-        learnMoreLink = 'Contractions';
+        learnMoreLink = 'https://github.com/retextjs/retext-contractions#use';
         if (suggestion.ruleID === 'missing-smart-apostrophe') {
           learnMoreLink = 'https://www.grammarbook.com/punctuation/apostro.asp';
         } else if (suggestion.ruleID === 'smart-apostrophe')  {
