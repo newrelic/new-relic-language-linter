@@ -16,4 +16,4 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 - [Passive voice](https://unifiedjs.com/explore/package/retext-passive/)
 
 ### 💬 I have questions or ideas
-Reach out to me on slack @dgolden 👋🏽 or email me (danielgolden90[at]gmail.com). I'd love to hear/talk about them.
+Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) 👋🏽 or email me (danielgolden90[at]gmail.com). I'd love to hear/talk about them.
