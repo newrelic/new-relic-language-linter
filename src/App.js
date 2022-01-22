@@ -147,7 +147,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
             </Typography>
             <p>
               I picked some of the {` `} 
-              <a href="https://unifiedjs.com/explore/?q=retext">out of the box rules</a> 
+              <a href="https://unifiedjs.com/explore/keyword/retext-plugin/">out of the box rules</a> 
               {` `} for this demo, but in addition to being able to {` `}
               <a href="https://unifiedjs.com/learn/guide/create-a-plugin/">create our own rules</a>
               , we can customize the existing ones. Here are the rules used in this demo:
