@@ -16,7 +16,6 @@ import retextSpell from "retext-spell";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
 
-import NewRelicLogo from './images/new-relic-logo.svg';
 
 
 import { 
@@ -25,7 +24,6 @@ import {
   Stack, 
   Typography, 
   List, 
-  Chip
 } from '@mui/material';
 
 import '@fontsource/roboto/300.css';
