@@ -15,6 +15,13 @@ h6 {
   max-width: 500px;
 }
 
+.sugestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
 .suggestion-container {
   display: flex;
   gap: 10px;
@@ -36,8 +43,16 @@ h6 {
   display: inline-block;
   width: 6px;
   height: 6px;
-  background-color: #df2d24;
+  background-color: #919797;
   border-radius: 100%;
+}
+
+.suggestion-rule-severity.severe {
+  background-color: #df2d24;
+}
+
+.suggestion-rule-severity.moderate {
+  background-color: #0c74df;
 }
 
 .suggestion-rule-label {
@@ -53,6 +68,17 @@ h6 {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+.summary-basic {
+  font-size: 15px;
+  color: #283636;
+  font-weight: 700;
+  gap: 6px;
+}
+
+.basic-summary-example {
+  font-weight: 400;
 }
 
 .suggestion-summary-current {
@@ -93,7 +119,7 @@ h6 {
 .suggestion-cta-secondary {
   display: flex;
   padding: 6px 10px;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
   border: none;
   background-color: transparent;
@@ -101,6 +127,7 @@ h6 {
   color: #6e7575;
   border-radius: 3px;
   transition: all 0.1s ease-out;
+  text-decoration: none;
 }
 
 .suggestion-cta-secondary:hover {

@@ -46,7 +46,7 @@ import '@fontsource/roboto/700.css';
 function App() {
   const [report, setReport] = useState([]);
   const [sampleText, setSampleText] = useState(
-    `There were some issues iwth other projects not being meant for use in the browser so I decided to try this one out. It's called "Retext" and it comes with a really nice set of of plugins.  I think it offers lots of customization which I'm really excited about. Firemen are cool.
+    `There were some issues iwth other projects not being meant for use in the browser so I decided to try this one out. It's called "Retext" and it comes with a really nice set of of plugins.  I think it offers lots of customization which Im really excited about. Firemen are cool.
 
 The constellation also contains an isolated neutron
 star—Calvera—and Orion, the hottest star yet
@@ -65,6 +65,7 @@ discovered, with a surface temperature of 200,000 kelvin`
 
   const lintMyText = () => {
     retext()
+      .use(retextContractions)
       .use(retextSpell, retextSpellOptions)
       .use(retextRepeatedWords)
       .use(retextEquality)
@@ -72,7 +73,6 @@ discovered, with a surface temperature of 200,000 kelvin`
       .use(retextReadability)
       .use(retextSentenceSpacing)
       .use(retextPassive)
-      .use(retextContractions)
       .use(retextStringify)
       .process(sampleText)
       .then((report) => {
@@ -132,7 +132,7 @@ discovered, with a surface temperature of 200,000 kelvin`
         <Card>
           <CardContent>
             <Typography variant="h5">Suggestions</Typography>
-            <List>
+            <List className="sugestion-list">
               {renderReport()}
             </List>
           </CardContent>
