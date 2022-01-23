@@ -8,14 +8,16 @@ import IconHelp from './images/icon-help.svg';
 
 function Suggestion(props) {
   const {suggestion, sourceText} = props
+  const suggestionHasExpected = !!suggestion?.expected
   
   const summaryType = () => {
     let summaryType = 'replacement';
     if (
       suggestion.source === 'retext-spell' ||
       suggestion.source === 'retext-contractions' ||
+      suggestion.source === 'retext-use-contractions' ||
       suggestion.source === 'retext-repeated-words' ||
-      suggestion.source === 'retext-equality'
+      (suggestion.source === 'retext-equality' && suggestionHasExpected)
       ) {
         return summaryType
     } else if (
@@ -23,7 +25,9 @@ function Suggestion(props) {
       suggestion.source === 'retext-passive' ||
       suggestion.source === 'retext-readability'
     ) {
-      summaryType = 'basic'
+      return summaryType = 'basic'
+    } else if (suggestion.source === 'retext-equality' && !suggestionHasExpected) {
+      summaryType = 'removal'
     }
 
     return summaryType
@@ -43,6 +47,7 @@ function Suggestion(props) {
       suggestion.source === 'retext-sentence-spacing' ||
       suggestion.source === 'retext-equality' ||
       suggestion.source === 'retext-readability' ||
+      suggestion.source === 'retext-use-contractions' ||
       suggestion.source === 'retext-passive' 
     ) {
       ruleSeverity = 'moderate'
@@ -59,6 +64,7 @@ function Suggestion(props) {
         ruleLabel = 'Spelling';
         break;
       case 'retext-contractions':
+      case 'retext-use-contractions':
         ruleLabel = 'Contractions';
         break;
       case 'retext-repeated-words':
@@ -102,8 +108,27 @@ function Suggestion(props) {
     }
     
     const renderSummaryReplacement = () => {
-      return (
-        <span className="suggestion-summary-replacement">{suggestion.expected[0]}</span>
+      const maxReplacementCount = 5
+      const firstLetterOfOffender = suggestion.actual.substring(0,1)
+      const offenderIsUpperCase = firstLetterOfOffender === firstLetterOfOffender.toUpperCase()
+      
+      return suggestion?.expected?.map((replacement, index) => {
+        let caseSensitiveReplacement = replacement
+
+        if (index < maxReplacementCount) {
+            if (offenderIsUpperCase) {
+              const firstLetterOfReplacement = replacement.substring(0,1);
+              caseSensitiveReplacement = firstLetterOfReplacement.toUpperCase() + replacement.substring(1)
+            }
+            return (
+              <span className={`suggestion-summary-replacement`}>
+                {caseSensitiveReplacement}
+              </span>
+            )
+          }
+
+          return ''
+        }
       )
     }
 
@@ -134,19 +159,17 @@ function Suggestion(props) {
   
     return(
       <div className={`suggestion-summary-container summary-${summaryType()}`}>
-        {
-          summaryType() === 'replacement' && renderSummaryCurrent()
-        }
+        {summaryType() === 'replacement' && renderSummaryCurrent()}
+        {summaryType() === 'removal' && renderSummaryCurrent()}
+        {summaryType() === 'replacement' && renderSummaryArrow()}
 
         {
-          summaryType() === 'replacement' && renderSummaryArrow()
-        }
-
-        {
-          (
-            summaryType() === 'replacement' || 
-            summaryType() === 'removal'
-          ) && renderSummaryReplacement()
+          (summaryType() === 'replacement') && (
+            <div className={`suggestion-summary-replacements ${suggestion.expected.length === 0 ? 'no-replacement' : ''}`}>
+              {renderSummaryReplacement()}
+              {suggestion.expected.length === 0 && '?'}
+            </div>
+          )
         }
         
         {
@@ -218,10 +241,17 @@ function Suggestion(props) {
           </>
         )
       case 'retext-equality':
+        const secondSentence = suggestionHasExpected ? (
+          <>Consider using {highlightText(suggestion.expected[0])} instead.</>
+        ) : (
+          `Try not to use it.`
+        )
+        
+
         return (
           <>
             {highlightText(suggestion.actual)} {` `} may be insensitive.
-            Consider using {highlightText(suggestion.expected)} instead.
+            {secondSentence}
           </>
         )
       case 'retext-readability':
@@ -233,9 +263,17 @@ function Suggestion(props) {
 
         return (
           <>
-            We're {Math.round(suggestion.confidence * 100)}% confident the 
+            We're {Math.round(suggestion.confidence * 100)}% sure the 
             sentence beginning with {highlightText(readabilityCuplrit())}... is 
             difficult to read. Consider rewriting it to make it easier to read.
+          </>
+        )
+      case 'retext-use-contractions':
+        return (
+          <>
+            Consider changing {highlightText(suggestion.actual)} to {` `}
+            {highlightText(suggestion.expected[0])} to give your writing a more 
+            conversational and personal feel.
           </>
         )
       default:
@@ -244,7 +282,8 @@ function Suggestion(props) {
   }
 
   const renderSuggestionSecondaryActionCTA = () => {
-    let learnMoreLink = 'https://one-core.datanerd.us/nr1-product/design/writing'
+    let learnMoreLink = ''
+
     switch (suggestion.source) {
       case 'retext-spell':
         learnMoreLink = 'https://en.wikipedia.org/wiki/American_English';
@@ -275,8 +314,11 @@ function Suggestion(props) {
       case 'retext-passive':
         learnMoreLink = 'https://www.grammarly.com/blog/active-vs-passive-voice/';
         break;
+      case 'retext-use-contractions':
+        learnMoreLink = 'https://one-core.datanerd.us/foundation/design/writing/contractions/';
+        break;
       default:
-        return learnMoreLink
+        return learnMoreLink = 'https://one-core.datanerd.us/nr1-product/design/writing'
     }
 
 

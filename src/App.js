@@ -13,9 +13,9 @@ import retextPassive from "retext-passive";
 import retextContractions from "retext-contractions";
 import retextEquality from 'retext-equality'
 import retextSpell from "retext-spell";
+import retextUseContractions from "retext-use-contractions";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
-
 
 
 import { 
@@ -36,7 +36,7 @@ import '@fontsource/roboto/700.css';
 function App() {
   const [report, setReport] = useState([]);
   const [sampleText, setSampleText] = useState(
-    `There were some issues iwth other projects not being meant for use in the browser so I decided to try this one out. It's called "Retext" and it comes with a really nice set of of plugins.  I think it offers lots of customization which Im really excited about. Firemen are cool.
+    `There was a issue iwth other projects not being meant for use in the browser so I decided to try this one out. It is called "Retext" and it comes with a really nice set of of plugins.  It offers lots of customization. Firemen, feel free edit the master document.
 
 The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered, with a surface temperature of 200,000 kelvin`
   );
@@ -55,9 +55,10 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
     retext()
       .use(retextContractions)
       .use(retextSpell, retextSpellOptions)
+      .use(retextIndefiniteArticle)
       .use(retextRepeatedWords)
       .use(retextEquality)
-      .use(retextIndefiniteArticle)
+      .use(retextUseContractions)
       .use(retextReadability)
       .use(retextSentenceSpacing)
       .use(retextPassive)
@@ -155,11 +156,6 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
             </p>
             <ul>
               <li>
-                <a href="https://unifiedjs.com/explore/package/retext-contractions/">
-                  Contractions
-                </a>
-              </li>
-              <li>
                 <a href="https://unifiedjs.com/explore/package/retext-repeated-words/">
                   Repeated words
                 </a>
@@ -188,6 +184,16 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
                 <a href="https://unifiedjs.com/explore/package/retext-passive/">
                   Passive voice
                 </a>
+              </li>
+              <li>
+                <a href="https://unifiedjs.com/explore/package/retext-contractions/">
+                  Check for apostrophes
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/danielgolden/retext-use-contractions">
+                  Use contractions
+                </a> (a custom rule)
               </li>
             </ul>
 
