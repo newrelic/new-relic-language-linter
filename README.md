@@ -20,4 +20,4 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 
 ### 💬 I have questions or ideas
 
-Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) 👋🏽 or reach me on twitter (@dangolden1). I'd love to hear/talk about them.
+Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) 👋🏽 or reach me on twitter @dangolden1. I'd love to hear/talk about them.
