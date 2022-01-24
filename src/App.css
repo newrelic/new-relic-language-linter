@@ -90,6 +90,10 @@ div hr.standard-hr {
   border-radius: 6px;
 }
 
+.suggestion-container.suggestion-accepted {
+  display: none;
+}
+
 .suggestion-rule-container {
   display: flex;
   gap: 8px;
@@ -170,6 +174,17 @@ div hr.standard-hr {
   background-color: #3387dd;
   border-radius: 6px;
   color: #fff;
+  transition: all 0.085s ease-out;
+}
+
+.suggestion-summary-replacement:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+  background-color: #4c9beb;
+}
+
+.suggestion-summary-replacement:active {
+  transform: translateY(1px);
 }
 
 .suggestion-summary-replacements {

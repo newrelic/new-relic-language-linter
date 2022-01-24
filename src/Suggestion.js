@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from "react";
 
 import IconArrow from './images/icon-arrow.svg';
 import IconPlus from './images/icon-plus.svg';
@@ -7,7 +8,14 @@ import IconHelp from './images/icon-help.svg';
 
 
 function Suggestion(props) {
-  const {suggestion, sourceText} = props
+  const {
+    suggestion, 
+    sourceText, 
+    sampleText, 
+    setSampleText,
+    suggestionHasModifiedSampleText,
+    setSuggestionHasModifiedSampleText
+  } = props
   const suggestionHasExpected = !!suggestion?.expected
   
   const summaryType = () => {
@@ -121,7 +129,10 @@ function Suggestion(props) {
               caseSensitiveReplacement = firstLetterOfReplacement.toUpperCase() + replacement.substring(1)
             }
             return (
-              <span className={`suggestion-summary-replacement`}>
+              <span 
+                className={`suggestion-summary-replacement`}
+                onClick={() => handleReplacementClick(caseSensitiveReplacement)}
+              >
                 {caseSensitiveReplacement}
               </span>
             )
@@ -339,8 +350,21 @@ function Suggestion(props) {
     }
   }
 
+  const handleReplacementClick = (caseSensitiveReplacement) => {
+    const suggestionStart = suggestion.position.start.offset
+    const suggestionEnd = suggestion.position.end.offset
+    const textBeforeOffender = sampleText.substring(0, suggestionStart)
+    const textAfterOffender = sampleText.substring(suggestionEnd)
+    let newSampleText = [textBeforeOffender, caseSensitiveReplacement, textAfterOffender]
+
+    newSampleText = newSampleText.join('')
+
+    setSampleText(newSampleText)
+    setSuggestionHasModifiedSampleText(suggestionHasModifiedSampleText + 1)
+  }
+
   return (
-    <div className="suggestion-container">
+    <div className={`suggestion-container`}>
       <div className="suggestion-rule-container">
         <span className={`suggestion-rule-severity ${ruleSeverity()}`}></span>
         <h6 className="suggestion-rule-label">{ruleLabel()}</h6>

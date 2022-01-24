@@ -2,7 +2,7 @@ import './App.css';
 
 import Suggestion from './Suggestion'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { retext } from "retext";
 import retextIndefiniteArticle from "retext-indefinite-article";
 import retextRepeatedWords from "retext-repeated-words";
@@ -35,11 +35,16 @@ import '@fontsource/roboto/700.css';
 
 function App() {
   const [report, setReport] = useState([]);
+  const [suggestionHasModifiedSampleText, setSuggestionHasModifiedSampleText] = useState(0);
   const [sampleText, setSampleText] = useState(
     `There was a issue iwth other projects not being meant for use in the browser so I decided to try this one out. It is called "Retext" and it comes with a really nice set of of plugins.  It offers lots of customization. Firemen, feel free edit the master document.
 
 The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered, with a surface temperature of 200,000 kelvin`
   );
+
+  useEffect(() => {
+    lintMyText()
+  }, [suggestionHasModifiedSampleText])
 
   const retextSpellOptions = {
     dictionary: callback => {
@@ -85,6 +90,10 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
         <Suggestion 
           suggestion={suggestion}
           sourceText={report.value}
+          sampleText={sampleText}
+          setSampleText={setSampleText}
+          suggestionHasModifiedSampleText={suggestionHasModifiedSampleText}
+          setSuggestionHasModifiedSampleText={setSuggestionHasModifiedSampleText}
         />
         )
       });
