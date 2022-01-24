@@ -1,6 +1,6 @@
 # NR Language linter demo
 
-Like Grammarly for people who write New Relic UI copy, but focused on writing-style more than grammar. This is project is a WIP.
+Like Grammarly for people who write New Relic UI copy, but focused on writing-style more than grammar. This project is a WIP.
 
 ### 🧐 What is this?
 
@@ -12,7 +12,7 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 
 - [Repeated words](https://unifiedjs.com/explore/package/retext-repeated-words/)
 - [Equality](https://unifiedjs.com/explore/package/retext-equality/)
-- [Indifinite article](https://unifiedjs.com/explore/package/retext-indefinite-article/)
+- [Indefinite article](https://unifiedjs.com/explore/package/retext-indefinite-article/)
 - [Readability](https://unifiedjs.com/explore/package/retext-readability/)
 - [Sentence spacing](https://unifiedjs.com/explore/package/retext-sentence-spacing/)
 - [Passive voice](https://unifiedjs.com/explore/package/retext-passive/)
@@ -21,4 +21,4 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 
 ### 💬 I have questions or ideas
 
-Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) 👋🏽 or email me (danielgolden90[at]gmail.com). I'd love to hear/talk about them.
+Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) or reach me on twitter (@dangolden1). I'd love to hear/talk about them.
