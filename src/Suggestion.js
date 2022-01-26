@@ -1,5 +1,7 @@
 import './App.css';
 
+import { useState } from 'react'
+
 import IconArrow from './images/icon-arrow.svg';
 import IconPlus from './images/icon-plus.svg';
 import IconTrash from './images/icon-trash.svg';
@@ -15,6 +17,9 @@ function Suggestion(props) {
     suggestionHasModifiedSampleText,
     setSuggestionHasModifiedSampleText
   } = props
+
+  const [ deleteIsHovered, setDeleteIsHovered ] = useState(false)
+
   const suggestionHasExpected = !!suggestion?.expected
   
   const summaryType = () => {
@@ -331,7 +336,6 @@ function Suggestion(props) {
         return learnMoreLink = 'https://one-core.datanerd.us/nr1-product/design/writing'
     }
 
-
     if (suggestion.source === 'retext-spell') {
       return (
         <button className="suggestion-cta-secondary">
@@ -361,6 +365,16 @@ function Suggestion(props) {
     setSampleText(newSampleText)
     setSuggestionHasModifiedSampleText(suggestionHasModifiedSampleText + 1)
   }
+  
+  const handleDeleteButtonMouseEnter = () => {
+    setTimeout(() => {
+      setDeleteIsHovered(true)
+    }, 500)
+  }
+
+  const handleDeleteMouseLeave = () => {
+    setDeleteIsHovered(false)
+  }
 
   return (
     <div className={`suggestion-container`}>
@@ -379,8 +393,16 @@ function Suggestion(props) {
 
       <div className="suggestions-ctas">
         {renderSuggestionSecondaryActionCTA()}
-        <button className="suggestion-cta-secondary suggestion-cta-icon-only">
-          <img src={IconTrash} alt="Delete icon" className="suggestion-summary-trash-icon" />
+        <button 
+          className={`suggestion-cta-secondary suggestion-cta-icon-only ${deleteIsHovered ? 'delete-is-hovered' : ''}`}
+          onMouseEnter={() => handleDeleteButtonMouseEnter()}
+          onMouseLeave={() => handleDeleteMouseLeave()}
+        >
+          <img 
+            src={IconTrash} 
+            alt="Delete icon" 
+            className={`suggestion-summary-trash-icon`} 
+          />
         </button>
       </div>
     </div>

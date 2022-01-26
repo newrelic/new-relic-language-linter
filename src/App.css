@@ -216,6 +216,7 @@ div hr.standard-hr {
 
 .suggestion-cta-secondary {
   display: flex;
+  position: relative;
   padding: 6px 10px;
   gap: 6px;
   align-items: center;
@@ -231,6 +232,32 @@ div hr.standard-hr {
 .suggestion-cta-secondary:hover {
   background-color: rgba(0, 0, 0, 0.05);
   cursor: pointer;
+}
+
+.suggestion-cta-secondary.delete-is-hovered:before {
+  content: "Dismiss";
+  display: inline-block;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  color: #fff;
+  border-radius: 3px;
+  background-color: rgba(0 0 0 / 80%);
+}
+
+.suggestion-cta-secondary.delete-is-hovered:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 3px solid rgba(0 0 0 / 80%);
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
 }
 
 .about div.MuiTypography-root.MuiTypography-h5:not(:first-child) {
