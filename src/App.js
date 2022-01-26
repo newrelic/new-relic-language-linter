@@ -60,8 +60,11 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
     retext()
       .use(retextContractions)
       .use(retextSpell, retextSpellOptions)
-      .use(retextIndefiniteArticle)
+      // It's important to use retextRepeatedWords _before_
+      // retextIndefiniteArticle. See why: 
+      // https://github.com/newrelic/new-relic-language-linter/issues/2
       .use(retextRepeatedWords)
+      .use(retextIndefiniteArticle)
       .use(retextEquality)
       .use(retextUseContractions)
       .use(retextReadability)
