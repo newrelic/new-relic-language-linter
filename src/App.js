@@ -35,7 +35,8 @@ import '@fontsource/roboto/700.css';
 // import { reporter } from "vfile-reporter";
 
 function App() {
-  const [report, setReport] = useState([]);
+  const [report, setReport] = useState({});
+  const [dismissedSuggestions, setDismissedSuggestions] = useState([]);
   const [suggestionHasModifiedSampleText, setSuggestionHasModifiedSampleText] = useState(0);
   const [sampleText, setSampleText] = useState(
     `There was a issue iwth other projects not being meant for use in the browser so I decided to try this one out. It is called "Retext" and it comes with a really nice set of of plugins.  It offers lots of customization. Firemen, feel free edit the master document.
@@ -100,6 +101,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
           suggestionHasModifiedSampleText={suggestionHasModifiedSampleText}
           setSuggestionHasModifiedSampleText={setSuggestionHasModifiedSampleText}
           removeSuggestion={removeSuggestion}
+          dismissedSuggestions={dismissedSuggestions}
         />
         )
       });
@@ -111,10 +113,16 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
   };
 
   const removeSuggestion = (suggestionId) => {
-    let newReport = report
-    newReport.message = report.messages.filter(suggestion => suggestion.name !== suggestionId)
+    let newReport = {...report}
+    // remove it from the report
+    newReport.messages = report.messages.filter(suggestion => suggestion.name !== suggestionId)
 
     setReport(newReport)
+    let newDismissedSuggestions = [...dismissedSuggestions]
+    newDismissedSuggestions.push(suggestionId)
+
+    // This way it stays hidden even after relint
+    setDismissedSuggestions(newDismissedSuggestions)
   }
 
   return (

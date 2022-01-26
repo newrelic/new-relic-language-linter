@@ -16,11 +16,11 @@ function Suggestion(props) {
     setSampleText,
     suggestionHasModifiedSampleText,
     setSuggestionHasModifiedSampleText,
-    removeSuggestion
+    removeSuggestion,
+    dismissedSuggestions
   } = props
 
   const [ deleteIsHovered, setDeleteIsHovered ] = useState(false)
-  const [ suggestionDismissed, setSuggestionDismissed ] = useState(false)
 
   const suggestionHasExpected = !!suggestion?.expected
   
@@ -379,12 +379,17 @@ function Suggestion(props) {
   }
 
   const handleDeleteButtonClick = () => {
-    setSuggestionDismissed(true)
     removeSuggestion(suggestion.name)
   }
 
+  const isSuggestionDismissed = () => {
+    return dismissedSuggestions.some(dismissedSuggestionId => {
+      return dismissedSuggestionId === suggestion.name
+    })
+  }
+
   return (
-    <div className={`suggestion-container ${suggestionDismissed ? 'suggestion-dismissed': ''}`}>
+    <div className={`suggestion-container ${isSuggestionDismissed() ? 'suggestion-dismissed': ''}`}>
       <div className="suggestion-rule-container">
         <span className={`suggestion-rule-severity ${ruleSeverity()}`}></span>
         <h6 className="suggestion-rule-label">{ruleLabel()}</h6>
