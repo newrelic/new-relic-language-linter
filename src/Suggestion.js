@@ -21,6 +21,7 @@ function Suggestion(props) {
   } = props
 
   const [ deleteIsHovered, setDeleteIsHovered ] = useState(false)
+  const [ tooltipTimer, setTooltipTimer ] = useState()
 
   const suggestionHasExpected = !!suggestion?.expected
   
@@ -369,12 +370,21 @@ function Suggestion(props) {
   }
   
   const handleDeleteButtonMouseEnter = () => {
-    setTimeout(() => {
+    setTooltipTimer(setTimeout(() => {
       setDeleteIsHovered(true)
-    }, 500)
+    }, 500))
+    // if (!tooltipTimer === undefined) {
+    //   clearTimeout(tooltipTimer)
+    // }
+    // const tooltipTimer = setTimeout(() => {
+    //   setDeleteIsHovered(true)
+    // }, 500)
+
+    return () => clearTimeout(tooltipTimer)
   }
 
   const handleDeleteMouseLeave = () => {
+    clearTimeout(tooltipTimer)
     setDeleteIsHovered(false)
   }
 
