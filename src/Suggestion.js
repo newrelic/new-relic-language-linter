@@ -15,10 +15,12 @@ function Suggestion(props) {
     sampleText, 
     setSampleText,
     suggestionHasModifiedSampleText,
-    setSuggestionHasModifiedSampleText
+    setSuggestionHasModifiedSampleText,
+    removeSuggestion
   } = props
 
   const [ deleteIsHovered, setDeleteIsHovered ] = useState(false)
+  const [ suggestionDismissed, setSuggestionDismissed ] = useState(false)
 
   const suggestionHasExpected = !!suggestion?.expected
   
@@ -376,8 +378,13 @@ function Suggestion(props) {
     setDeleteIsHovered(false)
   }
 
+  const handleDeleteButtonClick = () => {
+    setSuggestionDismissed(true)
+    removeSuggestion(suggestion.name)
+  }
+
   return (
-    <div className={`suggestion-container`}>
+    <div className={`suggestion-container ${suggestionDismissed ? 'suggestion-dismissed': ''}`}>
       <div className="suggestion-rule-container">
         <span className={`suggestion-rule-severity ${ruleSeverity()}`}></span>
         <h6 className="suggestion-rule-label">{ruleLabel()}</h6>
@@ -397,6 +404,7 @@ function Suggestion(props) {
           className={`suggestion-cta-secondary suggestion-cta-icon-only ${deleteIsHovered ? 'delete-is-hovered' : ''}`}
           onMouseEnter={() => handleDeleteButtonMouseEnter()}
           onMouseLeave={() => handleDeleteMouseLeave()}
+          onClick={() => handleDeleteButtonClick()}
         >
           <img 
             src={IconTrash} 

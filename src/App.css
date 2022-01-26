@@ -88,6 +88,11 @@ div hr.standard-hr {
   background: #ffffff;
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.03);
   border-radius: 6px;
+  transition: 0.3s all ease-out;
+}
+
+.suggestion-container.suggestion-dismissed {
+  display: none;
 }
 
 .suggestion-container.suggestion-accepted {
@@ -174,7 +179,7 @@ div hr.standard-hr {
   background-color: #3387dd;
   border-radius: 6px;
   color: #fff;
-  transition: all 0.085s ease-out;
+  transition: all 0.065s ease-out;
 }
 
 .suggestion-summary-replacement:hover {
@@ -252,7 +257,7 @@ div hr.standard-hr {
   width: 0;
   height: 0;
   position: absolute;
-  top: -7px;
+  top: -8px;
   left: 50%;
   transform: translateX(-50%);
   border-top: 3px solid rgba(0 0 0 / 80%);

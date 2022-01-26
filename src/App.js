@@ -99,6 +99,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
           setSampleText={setSampleText}
           suggestionHasModifiedSampleText={suggestionHasModifiedSampleText}
           setSuggestionHasModifiedSampleText={setSuggestionHasModifiedSampleText}
+          removeSuggestion={removeSuggestion}
         />
         )
       });
@@ -108,6 +109,13 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
       )
     }
   };
+
+  const removeSuggestion = (suggestionId) => {
+    let newReport = report
+    newReport.message = report.messages.filter(suggestion => suggestion.name !== suggestionId)
+
+    setReport(newReport)
+  }
 
   return (
     <Stack 
