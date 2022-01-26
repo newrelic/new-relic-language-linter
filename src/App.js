@@ -16,6 +16,7 @@ import retextSpell from "retext-spell";
 import retextUseContractions from "retext-use-contractions";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
+import { dictionaryContents as personalDictionary } from "./personalDictionary";
 
 
 import { 
@@ -53,6 +54,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
         dic: en_us_dic,
       })
     },
+    personal: personalDictionary.join('\n'),
     max: 5,
   }
 
@@ -179,7 +181,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               </li>
               <li>
                 <a href="https://unifiedjs.com/explore/package/retext-indefinite-article/">
-                  Indifinite article
+                  Indefinite article
                 </a>
               </li>
               <li>
