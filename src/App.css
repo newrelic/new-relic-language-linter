@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -44,7 +50,7 @@ div hr.standard-hr {
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: stretch;
   gap: 20px;
   width: 100%;
 }
@@ -290,4 +296,23 @@ div hr.standard-hr {
   color: rgba(0, 0, 0, 0.76);
   border: 2px solid rgba(0, 0, 0, 0.05);
   border-radius: 8px;
+}
+
+.cm-editor {
+  padding: 16px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  transition: all 0.075s ease-out;
+}
+
+.form-container .cm-focused.ͼ1.cm-editor {
+  box-shadow: inset 0 0 0 1px rgba(0 80 150 / 60%),
+    0 0 0 3px rgba(0 80 150 / 10%);
+  outline: none;
+}
+
+.cm-editor .cm-content {
+  font-family: Inter;
+  font-size: 18px;
+  line-height: 150%;
 }

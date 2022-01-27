@@ -17,11 +17,12 @@ import retextUseContractions from "retext-use-contractions";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
 import { dictionaryContents as personalDictionary } from "./personalDictionary";
+import CodeMirror from '@uiw/react-codemirror';
+import { EditorView } from '@codemirror/view';
 
 
 import { 
   Button, 
-  TextField, 
   Stack, 
   Typography, 
   List, 
@@ -81,8 +82,8 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
       });
   }
 
-  const handleTextAreaOnChange = (event) => {
-    setSampleText(event.target.value);
+  const handleTextAreaOnChange = (value) => {
+    setSampleText(value);
   };
 
   const handleButtonTrigger = () => {
@@ -122,7 +123,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
     newDismissedSuggestions.push(suggestionId)
 
     // This way it stays hidden even after relint
-    setDismissedSuggestions(newDismissedSuggestions)
+    setDismissedSuggestions(dismissedSuggestions.push(suggestionId))
   }
 
   return (
@@ -145,19 +146,16 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
         </header>
         <Stack alignItems="flex-end" spacing={2} className="primary-section-body">
           <form className="form-container">
-            <TextField
-              className="textfield"
+            <CodeMirror
               value={sampleText}
-              multiline
-              sx={{
-                width: `100%`,
-                maxWidth: '1000px',
-              }}
-              maxRows={14}
-              label="Sample copy"
-              onChange={(e) => handleTextAreaOnChange(e)}
-              variant='filled'
+              onChange={(value) => handleTextAreaOnChange(value)}
+              height="300px"
+              width="100%"
+              extensions={[EditorView.lineWrapping]}
+              basicSetup={false}
+              autoFocus={true}
             />
+            
             <Button size="large" variant='contained' onClick={() => handleButtonTrigger()}>Lint text</Button>
           </form>
           <hr className="standard-hr"/>
