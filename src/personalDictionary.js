@@ -23,6 +23,7 @@ export const dictionaryContents = [
   'SLO',
   'SLA',
   'SLI',
+  'SLM',
   'devops',
   'nrql/PHP',
   'pi-hole',
