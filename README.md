@@ -18,6 +18,7 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 - [Passive voice](https://unifiedjs.com/explore/package/retext-passive/)
 - [Check apostrophes](https://unifiedjs.com/explore/package/retext-contractions/)
 - [Use contractions](https://github.com/danielgolden/retext-use-contractions) (a custom rule)
+- [No emoji](https://github.com/danielgolden/retext-no-emojis) (a custom rule)
 
 ### 💬 I have questions or ideas
 

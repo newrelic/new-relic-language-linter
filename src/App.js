@@ -227,6 +227,11 @@ function App() {
                   Use contractions
                 </a> (a custom rule)
               </li>
+              <li>
+                <a href="https://github.com/danielgolden/retext-no-emojis">
+                  No emoji
+                </a> (a custom rule)
+              </li>
             </ul>
 
             <Typography variant="h5" component="div" gutterBottom>
