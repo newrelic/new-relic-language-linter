@@ -41,7 +41,10 @@ function Suggestion(props) {
       suggestion.source === 'retext-readability'
     ) {
       return summaryType = 'basic'
-    } else if (suggestion.source === 'retext-equality' && !suggestionHasExpected) {
+    } else if (
+      (suggestion.source === 'retext-equality' && !suggestionHasExpected) ||
+      suggestion.source === 'retext-no-emojis'
+    ) {
       summaryType = 'removal'
     }
 
@@ -63,6 +66,7 @@ function Suggestion(props) {
       suggestion.source === 'retext-equality' ||
       suggestion.source === 'retext-readability' ||
       suggestion.source === 'retext-use-contractions' ||
+      suggestion.source === 'retext-no-emojis' ||
       suggestion.source === 'retext-passive' 
     ) {
       ruleSeverity = 'moderate'
@@ -100,6 +104,9 @@ function Suggestion(props) {
       case 'retext-passive':
         ruleLabel = 'Clarity';
         break;
+      case 'retext-no-emojis':
+        ruleLabel = 'Consistent style';
+        break;
       default:
         return ruleLabel
     }
@@ -109,8 +116,15 @@ function Suggestion(props) {
 
   const renderSummary = () => {
     const renderSummaryCurrent = () => {
+      const summaryCurrentOnClick = summaryType() === 'removal' ? (
+        () => handleRemovalClick()
+      ) : null
+
       return (
-        <div className="suggestion-summary-current">
+        <div 
+          className="suggestion-summary-current"
+          onClick={summaryCurrentOnClick}
+        >
           <span className="suggestion-summary-current-text">{suggestion.actual}</span>
         </div>
       )
@@ -294,6 +308,16 @@ function Suggestion(props) {
             conversational and personal feel.
           </>
         )
+      case 'retext-no-emojis':
+        return (
+          <>
+            Avoid using emojis in UI text. If you have the urge to use an emoji
+            , consult {` `} 
+            <a href="https://one-core.datanerd.us/foundation/design/writing/">
+            our docs for voice and tone</a> to rewrite your message until it 
+            achieves your goal.
+          </>
+        )
       default:
         return 'Uh oh'
     }
@@ -335,8 +359,11 @@ function Suggestion(props) {
       case 'retext-use-contractions':
         learnMoreLink = 'https://one-core.datanerd.us/foundation/design/writing/contractions/';
         break;
+      case 'retext-no-emojis':
+        learnMoreLink = 'https://one-core.datanerd.us/foundation/design/writing/emojis/';
+        break;
       default:
-        return learnMoreLink = 'https://one-core.datanerd.us/nr1-product/design/writing'
+        learnMoreLink = 'https://one-core.datanerd.us/nr1-product/design/writing'
     }
 
     if (suggestion.source === 'retext-spell') {
@@ -362,6 +389,30 @@ function Suggestion(props) {
     const textBeforeOffender = sampleText.substring(0, suggestionStart)
     const textAfterOffender = sampleText.substring(suggestionEnd)
     let newSampleText = [textBeforeOffender, caseSensitiveReplacement, textAfterOffender]
+
+    newSampleText = newSampleText.join('')
+
+    setSampleText(newSampleText)
+    setSuggestionHasModifiedSampleText(suggestionHasModifiedSampleText + 1)
+  }
+
+  const handleRemovalClick = () => {
+    const suggestionStart = suggestion.position.start.offset
+    const suggestionEnd = suggestion.position.end.offset
+    let textBeforeOffender = sampleText.substring(0, suggestionStart)
+    let textAfterOffender = sampleText.substring(suggestionEnd)
+    const lastCharOfTextBeforeOffender = textBeforeOffender.substring(textBeforeOffender.length - 1, textBeforeOffender.length)
+    const lastCharOfTextAfterOffender = textAfterOffender.substring(0,1)
+
+    // does the emoji have any space around it? If so, strip it away.
+    if (lastCharOfTextAfterOffender === ' ') {
+      textAfterOffender = textAfterOffender.substring(1)
+    } else if (lastCharOfTextBeforeOffender === ' ') {
+      textBeforeOffender = textBeforeOffender.substring(0, textBeforeOffender.length -1)
+    }
+    
+
+    let newSampleText = [textBeforeOffender, textAfterOffender]
 
     newSampleText = newSampleText.join('')
 

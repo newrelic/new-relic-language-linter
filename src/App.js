@@ -14,6 +14,7 @@ import retextContractions from "retext-contractions";
 import retextEquality from 'retext-equality'
 import retextSpell from "retext-spell";
 import retextUseContractions from "retext-use-contractions";
+import retextNoEmojis from "retext-no-emojis";
 import en_us_aff from './en_aff.js'
 import en_us_dic from './en_dic.js'
 import { dictionaryContents as personalDictionary } from "./personalDictionary";
@@ -41,7 +42,7 @@ function App() {
   const [sampleText, setSampleText] = useState(
     `There was a issue iwth other projects not being meant for use in the browser so I decided to try this one out. It is called "Retext" and it comes with a really nice set of of plugins.  It offers lots of customization. Firemen, feel free edit the master document.
 
-The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered, with a surface temperature of 200,000 kelvin`
+    The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered ✨, with a surface temperature of 200,000 kelvin`
   );
 
   useEffect(() => {
@@ -70,6 +71,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
       .use(retextIndefiniteArticle)
       .use(retextEquality)
       .use(retextUseContractions)
+      .use(retextNoEmojis)
       .use(retextReadability)
       .use(retextSentenceSpacing)
       .use(retextPassive)

@@ -165,7 +165,19 @@ div hr.standard-hr {
   padding: 5px 7px 6px;
   color: #fff;
   background-color: #df2d24;
+  text-shadow: 0 1px rgb(0 0 0 / 10%);
   border-radius: 6px;
+  transition: all 0.065s ease-out;
+}
+
+.summary-removal .suggestion-summary-current:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+  background-color: #ec5148;
+}
+
+.summary-removal .suggestion-summary-current:active {
+  transform: translateY(1px);
 }
 
 .summary-removal .suggestion-summary-current-text {
