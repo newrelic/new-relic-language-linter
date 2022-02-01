@@ -72,7 +72,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
       .use(retextEquality)
       .use(retextUseContractions)
       .use(retextNoEmojis)
-      .use(retextReadability)
+      .use(retextReadability, { age: 19 })
       .use(retextSentenceSpacing)
       .use(retextPassive)
       .use(retextStringify)
