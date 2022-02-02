@@ -31,6 +31,7 @@ import "@fontsource/roboto/700.css";
 function App() {
   const [report, setReport] = useState({});
   const [dismissedSuggestions, setDismissedSuggestions] = useState([]);
+  const [textareaChangeTimer, setTextareaChangeTimer] = useState();
   const [suggestionHasModifiedSampleText, setSuggestionHasModifiedSampleText] =
     useState(0);
   const [sampleText, setSampleText] = useState(
@@ -42,6 +43,16 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
   useEffect(() => {
     lintMyText();
   }, [suggestionHasModifiedSampleText]);
+
+  useEffect(() => {
+    setTextareaChangeTimer(
+      setTimeout(() => {
+        lintMyText();
+      }, 300)
+    );
+
+    return () => clearTimeout(textareaChangeTimer);
+  }, [sampleText]);
 
   const retextSpellOptions = {
     dictionary: (callback) => {
@@ -78,11 +89,13 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
   };
 
   const handleTextAreaOnChange = (event) => {
+    // setTextareaChangeTimer(
+    // setTimeout(() => {
     setSampleText(event.target.value);
-  };
+    // }, 500)
+    // );
 
-  const handleButtonTrigger = () => {
-    lintMyText();
+    // return () => clearTimeout(textareaChangeTimer);
   };
 
   const renderReport = () => {
@@ -163,13 +176,6 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               onChange={(e) => handleTextAreaOnChange(e)}
               variant="filled"
             />
-            <Button
-              size="large"
-              variant="contained"
-              onClick={() => handleButtonTrigger()}
-            >
-              Lint text
-            </Button>
           </form>
           <hr className="standard-hr" />
           <div className="about">

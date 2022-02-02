@@ -466,12 +466,6 @@ function Suggestion(props) {
         setDeleteIsHovered(true);
       }, 500)
     );
-    // if (!tooltipTimer === undefined) {
-    //   clearTimeout(tooltipTimer)
-    // }
-    // const tooltipTimer = setTimeout(() => {
-    //   setDeleteIsHovered(true)
-    // }, 500)
 
     return () => clearTimeout(tooltipTimer);
   };
