@@ -1,4 +1,4 @@
-import "./App.css";
+import "./Components.css";
 
 import { useState } from "react";
 
@@ -13,8 +13,6 @@ function Suggestion(props) {
     sourceText,
     sampleText,
     setSampleText,
-    suggestionHasModifiedSampleText,
-    setSuggestionHasModifiedSampleText,
     removeSuggestion,
     dismissedSuggestions,
   } = props;
@@ -428,7 +426,6 @@ function Suggestion(props) {
     newSampleText = newSampleText.join("");
 
     setSampleText(newSampleText);
-    setSuggestionHasModifiedSampleText(suggestionHasModifiedSampleText + 1);
   };
 
   const handleRemovalClick = () => {
@@ -457,7 +454,6 @@ function Suggestion(props) {
     newSampleText = newSampleText.join("");
 
     setSampleText(newSampleText);
-    setSuggestionHasModifiedSampleText(suggestionHasModifiedSampleText + 1);
   };
 
   const handleDeleteButtonMouseEnter = () => {
