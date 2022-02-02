@@ -1,139 +1,25 @@
 import "./App.css";
 
-import Suggestion from "./Suggestion";
-
-import { useEffect, useState } from "react";
-import { retext } from "retext";
-import retextIndefiniteArticle from "retext-indefinite-article";
-import retextRepeatedWords from "retext-repeated-words";
-import retextStringify from "retext-stringify";
-import retextReadability from "retext-readability";
-import retextSentenceSpacing from "retext-sentence-spacing";
-import retextPassive from "retext-passive";
-import retextContractions from "retext-contractions";
-import retextEquality from "retext-equality";
-import retextSpell from "retext-spell";
-import retextUseContractions from "retext-use-contractions";
-import retextNoEmojis from "retext-no-emojis";
-import en_us_aff from "./en_aff.js";
-import en_us_dic from "./en_dic.js";
-import { dictionaryContents as personalDictionary } from "./personalDictionary";
-
-import { Button, TextField, Stack, Typography, List } from "@mui/material";
+import { useState } from "react";
+import { TextField, Stack, Typography } from "@mui/material";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import LanguageLinter from "./components/LanguageLinter";
 
 // import { reporter } from "vfile-reporter";
 
 function App() {
-  const [report, setReport] = useState({});
-  const [dismissedSuggestions, setDismissedSuggestions] = useState([]);
-  const [textareaChangeTimer, setTextareaChangeTimer] = useState();
-  const [suggestionHasModifiedSampleText, setSuggestionHasModifiedSampleText] =
-    useState(0);
   const [sampleText, setSampleText] = useState(
     `There was a issue iwth other projects not being meant for use in the browser so I decided to try this one out. It is called "Retext" and it comes with a really nice set of of plugins.  It offers lots of customization. Firemen, feel free edit the master document.
 
 The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered ✨, with a surface temperature of 200,000 kelvin`
   );
 
-  useEffect(() => {
-    lintMyText();
-  }, [suggestionHasModifiedSampleText]);
-
-  useEffect(() => {
-    setTextareaChangeTimer(
-      setTimeout(() => {
-        lintMyText();
-      }, 300)
-    );
-
-    return () => clearTimeout(textareaChangeTimer);
-  }, [sampleText]);
-
-  const retextSpellOptions = {
-    dictionary: (callback) => {
-      callback(null, {
-        aff: en_us_aff,
-        dic: en_us_dic,
-      });
-    },
-    personal: personalDictionary.join("\n"),
-    max: 5,
-  };
-
-  const lintMyText = () => {
-    retext()
-      .use(retextContractions)
-      .use(retextSpell, retextSpellOptions)
-      // It's important to use retextRepeatedWords _before_
-      // retextIndefiniteArticle. See why:
-      // https://github.com/newrelic/new-relic-language-linter/issues/2
-      .use(retextRepeatedWords)
-      .use(retextIndefiniteArticle)
-      .use(retextEquality)
-      .use(retextUseContractions)
-      .use(retextNoEmojis)
-      .use(retextReadability, { age: 19 })
-      .use(retextSentenceSpacing)
-      .use(retextPassive)
-      .use(retextStringify)
-      .process(sampleText)
-      .then((report) => {
-        setReport(report);
-        console.log(report);
-      });
-  };
-
   const handleTextAreaOnChange = (event) => {
-    // setTextareaChangeTimer(
-    // setTimeout(() => {
     setSampleText(event.target.value);
-    // }, 500)
-    // );
-
-    // return () => clearTimeout(textareaChangeTimer);
-  };
-
-  const renderReport = () => {
-    if (report?.messages?.length > 0) {
-      return report.messages.map((suggestion, index) => {
-        return (
-          <Suggestion
-            suggestion={suggestion}
-            sourceText={report.value}
-            sampleText={sampleText}
-            setSampleText={setSampleText}
-            suggestionHasModifiedSampleText={suggestionHasModifiedSampleText}
-            setSuggestionHasModifiedSampleText={
-              setSuggestionHasModifiedSampleText
-            }
-            removeSuggestion={removeSuggestion}
-            dismissedSuggestions={dismissedSuggestions}
-          />
-        );
-      });
-    } else {
-      return <Typography variant="body1">No suggestions to show...</Typography>;
-    }
-  };
-
-  const removeSuggestion = (suggestionId) => {
-    let newReport = { ...report };
-    // remove it from the report
-    newReport.messages = report.messages.filter(
-      (suggestion) => suggestion.name !== suggestionId
-    );
-
-    setReport(newReport);
-    let newDismissedSuggestions = [...dismissedSuggestions];
-    newDismissedSuggestions.push(suggestionId);
-
-    // This way it stays hidden even after relint
-    setDismissedSuggestions(newDismissedSuggestions);
   };
 
   return (
@@ -274,13 +160,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
       </div>
       <Stack className="suggestions-container">
         <Typography variant="h4">Suggestions</Typography>
-        {report?.messages?.length > 0 ? (
-          <List className="suggestion-list">{renderReport()}</List>
-        ) : (
-          <Typography variant="body1" className="suggestions-empty-state">
-            Click "lint text" to get started
-          </Typography>
-        )}
+        <LanguageLinter sampleText={sampleText} setSampleText={setSampleText} />
       </Stack>
     </Stack>
   );
