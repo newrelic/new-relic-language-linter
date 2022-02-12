@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+body {
+ font-family: "Inter", sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,8 +16,25 @@ body,
   overflow: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight:  600;
+}
+
+h1:first-child, 
+h2:first-child, 
+h3:first-child, 
+h4:first-child, 
+h5:first-child, 
+h6:first-child {
+  margin-top:  0;
+}
+
 h6 {
   margin: 0;
+}
+
+p {
+  line-height:  140%;
 }
 
 a {
@@ -26,6 +49,11 @@ div hr.standard-hr {
   border-top: 2px solid rgba(0 0 0 / 8%);
 }
 
+.app-container {
+  display:  flex;
+  height:  100%;
+}
+
 .primary-section {
   display: flex;
   flex-direction: column;
@@ -38,13 +66,15 @@ div hr.standard-hr {
 }
 
 .primary-section-body {
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: stretch;
   gap: 20px;
   width: 100%;
 }
@@ -87,3 +117,22 @@ div hr.standard-hr {
 .about ul {
   line-height: 155%;
 }
+
+.cm-editor {
+   padding: 16px;
+   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+   border-radius: 4px;
+   transition: all 0.075s ease-out;
+ }
+
+ .form-container .cm-focused.ͼ1.cm-editor {
+   box-shadow: inset 0 0 0 1px rgba(0 80 150 / 60%),
+     0 0 0 3px rgba(0 80 150 / 10%);
+   outline: none;
+ }
+
+ .cm-editor .cm-content {
+   font-family: Inter;
+   font-size: 18px;
+   line-height: 150%;
+ }

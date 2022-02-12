@@ -1,13 +1,10 @@
 import "./App.css";
 
 import { useState } from "react";
-import { TextField, Stack, Typography } from "@mui/material";
+import CodeMirror from '@uiw/react-codemirror';
+ import { EditorView } from '@codemirror/view';
 
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import LanguageLinter from "./components/LanguageLinter";
+import LanguageLinter from "new-relic-language-linter";
 
 // import { reporter } from "vfile-reporter";
 
@@ -18,56 +15,41 @@ function App() {
 The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered ✨, with a surface temperature of 200,000 kelvin`
   );
 
-  const handleTextAreaOnChange = (event) => {
-    setSampleText(event.target.value);
+  const handleTextAreaOnChange = (value) => {
+     setSampleText(value);
   };
 
   return (
-    <Stack alignItems="flex-start" spacing={0} direction="row" className="App">
+    <div className="app-container">
       <div className="primary-section">
         <header>
-          <Typography
-            variant="h3"
-            component="div"
-            gutterBottom
-            className="page-title"
-          >
+          <h1 className="page-title">
             NR Language linter demo
-          </Typography>
-          <Typography variant="body1">
+          </h1>
+          <p>
             Like Grammarly for people who write New Relic UI copy, but focused
             on writing-style more than grammar. This project is a{" "}
             <strong>WIP</strong>: {` `}
             <a href="https://github.com/danielgolden/figma-language-linter-demo/">
               View on GitHub
             </a>
-          </Typography>
+          </p>
         </header>
-        <Stack
-          alignItems="flex-end"
-          spacing={2}
-          className="primary-section-body"
-        >
+        <div className="primary-section-body">
           <form className="form-container">
-            <TextField
-              className="textfield"
-              value={sampleText}
-              multiline
-              sx={{
-                width: `100%`,
-                maxWidth: "1000px",
-              }}
-              maxRows={14}
-              label="Sample copy"
-              onChange={(e) => handleTextAreaOnChange(e)}
-              variant="filled"
-            />
+            <CodeMirror
+               value={sampleText}
+               onChange={(value) => handleTextAreaOnChange(value)}
+               height="300px"
+               width="100%"
+               extensions={[EditorView.lineWrapping]}
+               basicSetup={false}
+               autoFocus={true}
+             />
           </form>
           <hr className="standard-hr" />
           <div className="about">
-            <Typography variant="h5" component="div" gutterBottom>
-              🧐 What's this for?
-            </Typography>
+            <h3>🧐 What's this for?</h3>
             <p>
               It's a tool built for designers, engineers and anyone else who
               writes NR1 copy. Why? So that they can vet their copy for basic
@@ -80,9 +62,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               for more in-depth language issues.
             </p>
 
-            <Typography variant="h5" component="div" gutterBottom>
-              🖋️ What rules does this demo use?
-            </Typography>
+            <h3>🖋️ What rules does this demo use?</h3>
             <p>
               I picked some of the {` `}
               <a href="https://unifiedjs.com/explore/keyword/retext-plugin/">
@@ -145,9 +125,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               </li>
             </ul>
 
-            <Typography variant="h5" component="div" gutterBottom>
-              💬 I have questions or ideas
-            </Typography>
+            <h3>💬 I have questions or ideas</h3>
             <p>
               Reach out to me on slack {` `}
               <a href="https://newrelic.slack.com/archives/DJZP8JQ8M">
@@ -156,13 +134,13 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               {` `}👋🏽. I'd love to hear/talk about them.
             </p>
           </div>
-        </Stack>
+        </div>
       </div>
-      <Stack className="suggestions-container">
-        <Typography variant="h4">Suggestions</Typography>
+      <div className="suggestions-container">
+        <h2>Suggestions</h2>
         <LanguageLinter sampleText={sampleText} setSampleText={setSampleText} />
-      </Stack>
-    </Stack>
+      </div>
+    </div>
   );
 }
 
