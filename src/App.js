@@ -1,8 +1,8 @@
 import "./App.css";
 
 import { useState } from "react";
-import CodeMirror from '@uiw/react-codemirror';
- import { EditorView } from '@codemirror/view';
+import CodeMirror from "@uiw/react-codemirror";
+import { EditorView } from "@codemirror/view";
 
 import LanguageLinter from "new-relic-language-linter";
 
@@ -16,16 +16,14 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
   );
 
   const handleTextAreaOnChange = (value) => {
-     setSampleText(value);
+    setSampleText(value);
   };
 
   return (
     <div className="app-container">
       <div className="primary-section">
         <header>
-          <h1 className="page-title">
-            NR Language linter demo
-          </h1>
+          <h1 className="page-title">NR Language linter demo</h1>
           <p>
             Like Grammarly for people who write New Relic UI copy, but focused
             on writing-style more than grammar. This project is a{" "}
@@ -38,14 +36,14 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
         <div className="primary-section-body">
           <form className="form-container">
             <CodeMirror
-               value={sampleText}
-               onChange={(value) => handleTextAreaOnChange(value)}
-               height="300px"
-               width="100%"
-               extensions={[EditorView.lineWrapping]}
-               basicSetup={false}
-               autoFocus={true}
-             />
+              value={sampleText}
+              onChange={(value) => handleTextAreaOnChange(value)}
+              height="300px"
+              width="100%"
+              extensions={[EditorView.lineWrapping]}
+              basicSetup={false}
+              autoFocus={true}
+            />
           </form>
           <hr className="standard-hr" />
           <div className="about">
@@ -120,6 +118,12 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               <li>
                 <a href="https://github.com/danielgolden/retext-no-emojis">
                   No emoji
+                </a>{" "}
+                (a custom rule)
+              </li>
+              <li>
+                <a href="https://github.com/danielgolden/retext-capitalization">
+                  Capitalization
                 </a>{" "}
                 (a custom rule)
               </li>
