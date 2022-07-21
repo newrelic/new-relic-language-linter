@@ -12,6 +12,7 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 
 - [Repeated words](https://unifiedjs.com/explore/package/retext-repeated-words/)
 - [Equality](https://unifiedjs.com/explore/package/retext-equality/)
+- [Spelling](https://unifiedjs.com/explore/package/retext-spell/)
 - [Indefinite article](https://unifiedjs.com/explore/package/retext-indefinite-article/)
 - [Readability](https://unifiedjs.com/explore/package/retext-readability/)
 - [Sentence spacing](https://unifiedjs.com/explore/package/retext-sentence-spacing/)
@@ -22,5 +23,4 @@ I picked some of the [out of the box rules](https://unifiedjs.com/explore/keywor
 - [Capitalization](https://github.com/danielgolden/retext-capitalization) (a custom rule)
 
 ### 💬 I have questions or ideas
-
-Reach out to me on slack [@dgolden](https://newrelic.slack.com/archives/DJZP8JQ8M) or reach me on twitter (@dangolden1). I'd love to hear/talk about them.
+Reach out to the New Relic Design Systems team on slack [#help-one-core](https://newrelic.slack.com/archives/C01A76P3DPU) or reach me on twitter ([@dangolden1](https://twitter.com/dangolden1)). I'd love to hear/talk about them.
