@@ -85,6 +85,11 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
                 </a>
               </li>
               <li>
+                <a href="https://unifiedjs.com/explore/package/retext-spell/">
+                  Spelling
+                </a>
+              </li>
+              <li>
                 <a href="https://unifiedjs.com/explore/package/retext-indefinite-article/">
                   Indefinite article
                 </a>
@@ -131,11 +136,12 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
 
             <h3>💬 I have questions or ideas</h3>
             <p>
-              Reach out to me on slack {` `}
-              <a href="https://newrelic.slack.com/archives/DJZP8JQ8M">
-                @dgolden
+              Reach out to the designs systems team on slack {` `}
+              <a href="https://newrelic.slack.com/archives/C01A76P3DPU">
+                #help-one-core
               </a>
-              {` `}👋🏽. I'd love to hear/talk about them.
+              {` `}👋🏽. Or reach out to me on twitter{" "}
+              <a href="https://twitter.com/dangolden1">@dangolden1</a>.
             </p>
           </div>
         </div>
