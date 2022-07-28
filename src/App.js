@@ -23,12 +23,8 @@ function App() {
         <header>
           <h1 className="page-title">New Relic Language linter</h1>
           <p>
-            Like Grammarly for people who write New Relic UI copy, but focused
-            on writing-style more than grammar. View the project {` `}
-            <a href="https://github.com/danielgolden/figma-language-linter-demo/">
-              on GitHub
-            </a>
-            .
+            Like Grammarly for New Relic UI copy, but focused on writing-style
+            rather than grammar.
           </p>
         </header>
         <div className="primary-section-body">
@@ -41,6 +37,7 @@ function App() {
               extensions={[EditorView.lineWrapping]}
               basicSetup={false}
               autoFocus={true}
+              placeholder="Write or paste your text here..."
             />
           </form>
           <hr className="standard-hr" />
@@ -134,12 +131,19 @@ function App() {
 
             <h3>💬 I have questions or ideas</h3>
             <p>
-              Reach out to the designs systems team on slack {` `}
+              Reach out to the designs systems team on slack {` `} (
               <a href="https://newrelic.slack.com/archives/C01A76P3DPU">
                 #help-one-core
-              </a>
-              {` `}👋🏽 or reach out to me on twitter{" "}
+              </a>{" "}
+              👋🏽)
+              {` `} or reach out to me on twitter{" "}
               <a href="https://twitter.com/dangolden1">@dangolden1</a>.
+              Interested in contributing? Check out {` `}
+              <a href="https://github.com/danielgolden/figma-language-linter-demo/">
+                the repo
+              </a>{" "}
+              {` `}
+              on GitHub.
             </p>
           </div>
         </div>
