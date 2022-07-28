@@ -10,9 +10,7 @@ import LanguageLinter from "new-relic-language-linter";
 
 function App() {
   const [sampleText, setSampleText] = useState(
-    `There was a issue iwth other projects not being meant for use in the browser so I decided to try this one out. It is called "Retext" and it comes with a really nice set of of plugins.  It offers lots of customization. Firemen, feel free edit the master document.
-
-The constellation also contains an isolated neutron star—Calvera—and Orion, the hottest star yet discovered ✨, with a surface temperature of 200,000 kelvin`
+    `On the Entity Overview screen you can sort the entities that you are analysing by colour.  Looking for an an dashboard idea that other customers have found helpful? We've got you, guys. 3000 templates are made available every month.`
   );
 
   const handleTextAreaOnChange = (value) => {
@@ -23,14 +21,14 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
     <div className="app-container">
       <div className="primary-section">
         <header>
-          <h1 className="page-title">NR Language linter demo</h1>
+          <h1 className="page-title">New Relic Language linter</h1>
           <p>
             Like Grammarly for people who write New Relic UI copy, but focused
-            on writing-style more than grammar. This project is a{" "}
-            <strong>WIP</strong>: {` `}
+            on writing-style more than grammar. View the project {` `}
             <a href="https://github.com/danielgolden/figma-language-linter-demo/">
-              View on GitHub
+              on GitHub
             </a>
+            .
           </p>
         </header>
         <div className="primary-section-body">
@@ -52,12 +50,12 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               It's a tool built for designers, engineers and anyone else who
               writes NR1 copy. Why? So that they can vet their copy for basic
               issues like passive voice, deprecated terms, insensitive language,
-              and more. This way we can reserve the time of our friends in {` `}
+              and more. This way we can reserve the time of our awesome {` `}
               <a href="https://newrelic.slack.com/archives/CE7FX92TF">
                 #ui-writing
               </a>{" "}
               {` `}
-              for more in-depth language issues.
+              team for more in-depth (and dare I say important) language issues.
             </p>
 
             <h3>🖋️ What rules does this demo use?</h3>
@@ -140,7 +138,7 @@ The constellation also contains an isolated neutron star—Calvera—and Orion, 
               <a href="https://newrelic.slack.com/archives/C01A76P3DPU">
                 #help-one-core
               </a>
-              {` `}👋🏽. Or reach out to me on twitter{" "}
+              {` `}👋🏽 or reach out to me on twitter{" "}
               <a href="https://twitter.com/dangolden1">@dangolden1</a>.
             </p>
           </div>
