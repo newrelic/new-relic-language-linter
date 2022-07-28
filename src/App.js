@@ -9,9 +9,7 @@ import LanguageLinter from "new-relic-language-linter";
 // import { reporter } from "vfile-reporter";
 
 function App() {
-  const [sampleText, setSampleText] = useState(
-    `On the Entity Overview screen you can sort the entities that you are analysing by colour.  Looking for an an dashboard idea that other customers have found helpful? We've got you, guys. 3000 templates are made available every month.`
-  );
+  const [sampleText, setSampleText] = useState(``);
 
   const handleTextAreaOnChange = (value) => {
     setSampleText(value);
